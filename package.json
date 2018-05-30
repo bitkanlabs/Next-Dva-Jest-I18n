@@ -31,6 +31,29 @@
   "jest": {
     "setupFiles": [
       "<rootDir>/jest.setup.js"
-    ]
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "useBabelrc": true,
+        "tsConfigFile": "tsconfig.json"
+      }
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/.next/", "<rootDir>/node_modules/"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.(t|j)s?(x)",
+      "**/?(*.)+(spec|test).(t|j)s?(x)"
+    ],
+    "collectCoverage": true
   }
 }
