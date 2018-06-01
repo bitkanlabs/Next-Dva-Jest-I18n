@@ -4,6 +4,14 @@
     "@zeit/next-typescript/babel"
   ],
   "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "dva": "dva-no-router"
+        }
+      }
+    ],
     "transform-decorators-legacy",
     [
       "import",

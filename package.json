@@ -10,6 +10,7 @@
     "@zeit/next-css": "^0.2.0",
     "@zeit/next-typescript": "^1.0.1",
     "antd": "^3.5.4",
+    "dva-no-router": "^1.1.3",
     "next": "^6.0.3",
     "react": "^16.4.0",
     "react-dom": "^16.4.0"
@@ -18,9 +19,10 @@
     "@types/jest": "^22.2.3",
     "@types/next": "^2.4.11",
     "@types/prop-types": "^15.5.3",
-    "@types/react": "^16.3.14",
+    "@types/react": "^16.3.16",
     "@types/react-dom": "^16.0.5",
     "babel-plugin-import": "^1.7.0",
+    "babel-plugin-module-resolver": "^3.1.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -48,7 +50,8 @@
       }
     },
     "testPathIgnorePatterns": [
-      "<rootDir>/.next/", "<rootDir>/node_modules/"
+      "<rootDir>/.next/",
+      "<rootDir>/node_modules/"
     ],
     "testMatch": [
       "**/__tests__/**/*.(t|j)s?(x)",
