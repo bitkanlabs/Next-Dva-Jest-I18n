@@ -1,7 +1,7 @@
 import homepage from './homepage';
 
-const model = [
+const models = [
   homepage,
 ];
 
-export default model;
+export default models;

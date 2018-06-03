@@ -1,27 +1,34 @@
 import * as React from 'react';
+import { connect, DispatchProp } from 'react-redux';
 import Link from 'next/link';
+
+import { DvaContext } from '../store';
 import Head from '../components/head';
 import Nav from '../components/nav';
 import { Button } from 'antd';
-import WithDva from '../utils/store';
 
-class Page extends React.Component {
-  static async getInitialProps(props) {
+interface Props extends DispatchProp {
+  index: {
+    name: string;
+    count: number;
+  }
+}
+
+class Page extends React.Component<Props> {
+  static async getInitialProps(ctx: DvaContext<any>) {
     // first time run in server side
-    // other times run in client side ( client side init with default props
-    // console.log('get init props');
-    const {
-            pathname, query, isServer, store,
-          } = props;
+    // other times run in client side ( client side init with default ctx
+    const { pathname, query, isServer, store, } = ctx;
+
     // dispatch effects to fetch data here
-    await props.store.dispatch({ type: 'index/init' });
-    return {
-      // dont use store as property name, it will confilct with initial store
-      pathname, query, isServer, dvaStore: store,
-    };
+    await ctx.store.dispatch({ type: 'index/init' });
+
+    // don't use store as property name, it will conflict with initial store
+    return { pathname, query, isServer, dvaStore: store, };
   }
 
   render() {
+    console.log(this.props);
     const { index } = this.props;
     const { name, count } = index;
     // console.log('rendered!!');
@@ -125,4 +132,4 @@ class Page extends React.Component {
   }
 }
 
-export default WithDva((state) => { return { index: state.index }; })(Page);
+export default connect((state: Props) => { return { index: state.index }; })(Page);
