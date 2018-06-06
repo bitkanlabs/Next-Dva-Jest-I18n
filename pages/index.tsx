@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { connect, DispatchProp } from 'react-redux';
 import Link from 'next/link';
+import intl from "react-intl-universal";
 
-import { DvaContext } from '../store';
+import { DvaContext } from '../utils/store';
 import Head from '../components/head';
 import Nav from '../components/nav';
 import { Button } from 'antd';
+import './index.css'
 
 interface Props extends DispatchProp {
   index: {
@@ -27,8 +29,13 @@ class Page extends React.Component<Props> {
     return { pathname, query, isServer, dvaStore: store, };
   }
 
+  onSelectLocale(e) {
+    let lang = e.target.value;
+    location.search = `?lang=${lang}`;
+  }
+
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { index } = this.props;
     const { name, count } = index;
     // console.log('rendered!!');
@@ -38,9 +45,11 @@ class Page extends React.Component<Props> {
         <Nav/>
 
         <div className="hero">
-          <h1 className="title">Hello {name}</h1>
+          <h1 className="title">Hell {name}</h1>
           <h1 className="title">Welcome to Next+Dva!</h1>
           <p className="description">To get started, edit <code>pages/index.js</code> and save to reload.</p>
+          <p className="description">{intl.get('SIMPLE')}</p>
+
 
           <div className="row box">
             <Link href="https://github.com/zeit/next.js#getting-started">
@@ -79,54 +88,6 @@ class Page extends React.Component<Props> {
             </Link>
           </div>
         </div>
-
-        <style jsx>{`
-      .hero {
-        width: 100%;
-        color: #333;
-      }
-      .title {
-        margin: 0;
-        width: 100%;
-        padding-top: 80px;
-        line-height: 1.15;
-        font-size: 48px;
-      }
-      .title, .description {
-        text-align: center;
-      }
-      .box {
-        margin: 80px auto 40px;
-      }
-      .row {
-        max-width: 880px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9B9B9B;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
-      }
-    `}</style>
       </div>
     );
   }

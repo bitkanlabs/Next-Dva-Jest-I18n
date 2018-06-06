@@ -1,6 +1,6 @@
-import dva, { DvaInstance } from 'dva';
+import dva, { DvaInstance } from 'dva-no-router';
 import { Context } from 'next/document';
-import models from './model';
+import models from '../model';
 import { Store } from 'react-redux';
 
 export interface DvaProps<S> {
