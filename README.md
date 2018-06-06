@@ -14,6 +14,6 @@ $ npm install
 $ npm run dev
 
 # build for production
-$ yarn run build
+$ npm run build
 
 ```
